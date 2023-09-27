@@ -53,7 +53,7 @@ public class ReusableMethods {
     public ReusableMethods checkElementNotExist(By by){
         try{
             if (isDisplayed(by)){
-                Assert.assertTrue(false);
+                Assert.fail("Element displayed");
             }
         }
         catch (Exception e){
