@@ -3,6 +3,7 @@ package util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import static java.lang.Math.abs;
 import static util.DriverFactory.driver;
@@ -47,6 +48,18 @@ public class ReusableMethods {
     public void scrollDown(int pixel){
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0,"+ abs(pixel) + ");", "");
+    }
+
+    public ReusableMethods checkElementNotExist(By by){
+        try{
+            if (isDisplayed(by)){
+                Assert.assertTrue(false);
+            }
+        }
+        catch (Exception e){
+            Assert.assertTrue(true);
+        }
+        return this;
     }
 
 }
